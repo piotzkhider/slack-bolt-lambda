@@ -1,6 +1,5 @@
-'use strict';
-
 const { App, ExpressReceiver } = require('@slack/bolt');
+
 const expressReceiver = new ExpressReceiver({
   signingSecret: process.env.SLACK_SIGNING_SECRET,
 });
