@@ -18,7 +18,7 @@ install:
 .PHONY: install
 
 test:
-	cd ./hello-world && npm run test
+	@cd ./hello-world && npm run test
 .PHONY: test
 
 clean: delete-stack delete-bucket
@@ -48,7 +48,7 @@ delete-stack:
 .PHONY: delete-stack
 
 setup: install
-	@aws s3api get-bucket-location --bucket $(BUCKET) --region $(REGION) --profile $(PROFILE) || make create-bucket
-	make package-deploy
+	@aws s3api get-bucket-location --bucket $(BUCKET) --region $(REGION) --profile $(PROFILE) || $(MAKE) create-bucket
+	$(MAKE) package-deploy
 .PHONY: setup
 
